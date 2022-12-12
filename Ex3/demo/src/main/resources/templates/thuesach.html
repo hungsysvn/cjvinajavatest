@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Spring Boot Web Application Example</title>
+</head>
+<body>
+    <h1 align="center">Danh Sach Thue</h1>
+    <br/>
+    <a th:href="@{/addnew}">Add a new Book Loan</a>
+    <br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Sinh vien</th>
+                <th>Ma Sinh vien</th>
+                <th>Ten Sach</th>
+                <th>Ma Sach</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item : ${list}">
+                <td th:text="${item.id}">Id</td>
+                <td th:text="${item.student.hoTen}">Sinh vien</td>
+                <td th:text="${item.student.maSv}">Ma Sinh vien</td>
+                <td th:text="${item.book.ten}">Ten Sach</td>
+                <td th:text="${item.book.maSach}">Ma Sach</td>
+                <td><a th:href="@{/edit/{id}(id=${item.id})}">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${item.id})}">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
